@@ -5,8 +5,8 @@
     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="cadastroPU" transaction-type="RESOURCE_LOCAL">
-        <jta-data-source>java:jboss/datasources/PostgresDS</jta-data-source>
+    <persistence-unit name="cadastroPU">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.cadastropessoa.model.Pessoa</class>
         <class>com.cadastropessoa.model.Pessoa</class>
         <properties>
@@ -14,6 +14,7 @@
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="123"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
         </properties>

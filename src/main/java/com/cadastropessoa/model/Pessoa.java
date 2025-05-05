@@ -2,6 +2,7 @@ package com.cadastropessoa.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,21 +17,13 @@ public class Pessoa implements Serializable {
 
     private String sexo;
 
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Endereco> enderecos;
+
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Endereco> enderecos = new ArrayList<>();
     public Pessoa() {
     }
 
-    public Pessoa(Integer id, String nome, Date idade, String sexo) {
-        this.id = id;
-        this.nome = nome;
-        this.idade = idade;
-        this.sexo = sexo;
-    }
-
-
-
-    public Integer getId() {
+     public Integer getId() {
         return id;
     }
 
